@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Vibe Engineer in 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #FFFCF5;
+  --beige: #F5F5DC;
+  --dark-olive: #3D472C;
+  --olive: #575f49;
+  --olive-light: #7a8568;
+  --olive-faint: rgba(87, 95, 73, 0.08);
+  --shadow-sm: 0 2px 8px rgba(61, 71, 44, 0.1);
+  --shadow-md: 0 4px 20px rgba(61, 71, 44, 0.15);
+  --shadow-lg: 0 8px 40px rgba(61, 71, 44, 0.2);
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Source Code Pro', monospace;
+  background: var(--cream);
+  color: var(--dark-olive);
+  overflow-x: hidden;
+}
+
+/* Topographic SVG background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpath d='M300 50c80 0 150 40 190 100s50 130 30 200-70 130-140 160-150 30-220 0-120-90-140-160-10-140 30-200S220 50 300 50z' fill='none' stroke='%233D472C' stroke-width='1'/%3E%3Cpath d='M300 100c60 0 115 30 145 80s40 100 25 155-55 100-110 125-115 20-170 0-95-70-110-125-8-105 25-155S240 100 300 100z' fill='none' stroke='%233D472C' stroke-width='1'/%3E%3Cpath d='M300 150c45 0 85 22 108 60s30 78 18 118-42 76-83 95-88 16-128 0-72-54-83-95-5-80 18-118S255 150 300 150z' fill='none' stroke='%233D472C' stroke-width='1'/%3E%3Cpath d='M300 200c30 0 58 15 72 40s20 52 12 78-28 50-55 63-58 10-85 0-48-36-55-63-4-53 12-78S270 200 300 200z' fill='none' stroke='%233D472C' stroke-width='1'/%3E%3Cpath d='M300 250c15 0 28 8 36 20s10 26 6 40-14 26-28 32-28 6-42 0-24-18-28-32-2-28 6-40S285 250 300 250z' fill='none' stroke='%233D472C' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 600px 600px;
+}
+
+/* Slide base */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Decorative contour circles per slide */
+.slide::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(61, 71, 44, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide:nth-child(odd)::before {
+  top: -150px;
+  right: -150px;
+  box-shadow:
+    0 0 0 40px rgba(61, 71, 44, 0.03),
+    0 0 0 80px rgba(61, 71, 44, 0.02),
+    0 0 0 120px rgba(61, 71, 44, 0.01);
+}
+
+.slide:nth-child(even)::before {
+  bottom: -150px;
+  left: -150px;
+  box-shadow:
+    0 0 0 40px rgba(61, 71, 44, 0.03),
+    0 0 0 80px rgba(61, 71, 44, 0.02),
+    0 0 0 120px rgba(61, 71, 44, 0.01);
+}
+
+/* Card container */
+.card {
+  background: var(--cream);
+  border: 1px solid rgba(61, 71, 44, 0.12);
+  border-radius: 4px;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+}
+
+.card-rotated {
+  transform: rotate(-0.5deg);
+}
+
+.card-rotated-right {
+  transform: rotate(0.5deg);
+}
+
+/* Typography */
+h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--dark-olive);
+  line-height: 1.15;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--dark-olive);
+  line-height: 1.2;
+  margin-bottom: 0.6em;
+}
+
+h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--olive);
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+}
+
+p, li {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.8rem, 1.4vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--olive);
+}
+
+.subtitle {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  color: var(--olive-light);
+  font-weight: 400;
+}
+
+.big-quote {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  font-style: italic;
+  color: var(--dark-olive);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 750px;
+}
+
+.big-quote::before {
+  content: '\201C';
+  font-size: 1.5em;
+  color: var(--olive-light);
+  display: block;
+  margin-bottom: -0.3em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding-left: 1.4em;
+  position: relative;
+  margin-bottom: 0.6em;
+}
+
+ul li::before {
+  content: '\25CB';
+  position: absolute;
+  left: 0;
+  color: var(--olive-light);
+  font-size: 0.7em;
+  top: 0.35em;
+}
+
+/* Emphasis & tags */
+.tag {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--olive-light);
+  border-radius: 2px;
+  color: var(--olive);
+  margin-bottom: 1em;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--olive-light);
+  margin: 1.2em 0;
+  opacity: 0.5;
+}
+
+/* Image slides */
+.slide-image {
+  max-height: min(50vh, 400px);
+  max-width: 90%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: var(--shadow-lg);
+  transform: rotate(-1deg);
+  border: 4px solid var(--beige);
+}
+
+.slide-image.rotate-right {
+  transform: rotate(1deg);
+}
+
+.caption {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  color: var(--olive-light);
+  margin-top: 1em;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Terminal mockup */
+.terminal {
+  background: #1a1e14;
+  border-radius: 6px;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  max-width: 700px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+  line-height: 1.8;
+  overflow: hidden;
+}
+
+.terminal-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green { background: #28c840; }
+
+.terminal .line { color: #a8b590; }
+.terminal .warn { color: #e8a838; }
+.terminal .error { color: #d4644a; }
+.terminal .success { color: #5cb85c; }
+.terminal .comment { color: #6a7558; }
+.terminal .cmd { color: #b8c8a0; }
+
+/* Timeline */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 850px;
+}
+
+.timeline-item {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
+  position: relative;
+}
+
+.timeline-year {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--dark-olive);
+  margin-bottom: 0.3em;
+}
+
+.timeline-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  color: var(--olive-light);
+  line-height: 1.4;
+}
+
+.timeline-item::after {
+  content: '\2192';
+  position: absolute;
+  right: -1em;
+  top: 0.2em;
+  color: var(--olive-light);
+  font-size: 1.2em;
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+/* Two-column comparison */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 2rem);
+  max-width: 850px;
+  width: 100%;
+}
+
+.compare-col {
+  background: var(--cream);
+  border: 1px solid rgba(61, 71, 44, 0.12);
+  border-radius: 4px;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.compare-col h3 {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  margin-bottom: 0.5em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid rgba(61, 71, 44, 0.1);
+}
+
+.compare-col p, .compare-col li {
+  font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+}
+
+/* Spectrum bar */
+.spectrum {
+  display: flex;
+  align-items: stretch;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.spectrum-left, .spectrum-right {
+  flex: 1;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.spectrum-left {
+  background: rgba(61, 71, 44, 0.06);
+  border-right: 2px solid var(--olive-light);
+}
+
+.spectrum-right {
+  background: rgba(61, 71, 44, 0.12);
+}
+
+.spectrum h3 {
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+}
+
+.spectrum p, .spectrum li {
+  font-size: clamp(0.65rem, 1vw, 0.85rem);
+}
+
+/* Three-column archetypes */
+.archetypes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  max-width: 900px;
+  width: 100%;
+}
+
+.archetype {
+  background: var(--cream);
+  border: 1px solid rgba(61, 71, 44, 0.12);
+  border-radius: 4px;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.archetype h3 {
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  margin-bottom: 0.4em;
+}
+
+.archetype p {
+  font-size: clamp(0.6rem, 0.95vw, 0.8rem);
+}
+
+.archetype .risk {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+  color: #8a4a3a;
+  margin-top: 0.6em;
+  padding-top: 0.5em;
+  border-top: 1px solid rgba(61, 71, 44, 0.1);
+}
+
+/* Funnel */
+.funnel {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
+  max-width: 750px;
+  width: 100%;
+  justify-content: center;
+}
+
+.funnel-stage {
+  text-align: center;
+  flex: 1;
+}
+
+.funnel-stage .num {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--dark-olive);
+}
+
+.funnel-stage .label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  color: var(--olive-light);
+}
+
+.funnel-arrow {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--olive-light);
+}
+
+/* Phase card */
+.phase-card {
+  background: var(--cream);
+  border: 1px solid rgba(61, 71, 44, 0.12);
+  border-radius: 4px;
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+  max-width: 750px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+}
+
+.phase-number {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--olive-light);
+  margin-bottom: 0.5em;
+}
+
+/* Master loop */
+.loop {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.4rem, 1vw, 1rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.loop-step {
+  background: var(--cream);
+  border: 1px solid rgba(61, 71, 44, 0.15);
+  border-radius: 4px;
+  padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.8rem, 1.5vw, 1.3rem);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.loop-step .step-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  font-weight: 600;
+  color: var(--dark-olive);
+}
+
+.loop-step .step-sub {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.55rem, 0.85vw, 0.7rem);
+  color: var(--olive-light);
+}
+
+.loop-arrow {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--olive-light);
+}
+
+/* Slide number */
+.slide-num {
+  position: absolute;
+  bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+  right: clamp(1rem, 2vw, 1.5rem);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.7rem;
+  color: var(--olive-light);
+  opacity: 0.5;
+  z-index: 2;
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.visible.card-rotated {
+  transform: rotate(-0.5deg);
+}
+
+.reveal.visible.card-rotated-right {
+  transform: rotate(0.5deg);
+}
+
+.stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+.stagger > .reveal:nth-child(5) { transition-delay: 0.4s; }
+.stagger > .reveal:nth-child(6) { transition-delay: 0.5s; }
+.stagger > .reveal:nth-child(7) { transition-delay: 0.6s; }
+
+/* Navigation hint */
+.nav-hint {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.65rem;
+  color: var(--olive-light);
+  opacity: 0.4;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.nav-hint.hidden {
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+  .archetypes {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .spectrum {
+    flex-direction: column;
+  }
+  .spectrum-left {
+    border-right: none;
+    border-bottom: 2px solid var(--olive-light);
+  }
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-item::after {
+    content: '\2193';
+    position: static;
+    display: block;
+    margin-top: 0.3em;
+  }
+  .timeline-item:last-child::after {
+    display: none;
+  }
+  .loop {
+    flex-direction: column;
+  }
+  .loop-arrow {
+    transform: rotate(90deg);
+  }
+  .funnel {
+    flex-direction: column;
+  }
+  .funnel-arrow {
+    transform: rotate(90deg);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: Title ==================== -->
+<section class="slide stagger">
+  <div class="reveal" style="margin-bottom: 0.5em;">
+    <span class="tag">Hacklahoma 2026</span>
+  </div>
+  <h1 class="reveal" style="text-align:center; max-width: 800px;">How to Vibe Engineer<br>in 2026</h1>
+  <div class="divider reveal"></div>
+  <p class="subtitle reveal" style="text-align:center; max-width: 600px;">A talk about AI, taste, and not outsourcing the thinking</p>
+  <span class="slide-num">1 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 2: The Question ==================== -->
+<section class="slide">
+  <div class="card card-rotated reveal">
+    <span class="tag">The Question</span>
+    <p class="big-quote" style="margin-top: 0.5em;">
+      What advice would you give new grad software engineers right now?
+    </p>
+    <div class="divider" style="margin: 1em auto;"></div>
+    <p style="text-align:center; font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--olive-light);">Everyone's asking this because of AI coding tools.</p>
+  </div>
+  <span class="slide-num">2 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 3: Looking Back ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">Looking Back at CS Education</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated-right reveal" style="max-width: 750px;">
+    <ul>
+      <li class="reveal">Most CS classes were theoretical &mdash; fundamentals, architecture, algorithms</li>
+      <li class="reveal">Actual coding skills came from side projects + internships</li>
+      <li class="reveal">That blend of theory + self-directed practice worked then</li>
+      <li class="reveal">It still works now</li>
+    </ul>
+  </div>
+  <span class="slide-num">3 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 4: What I'd Do Differently ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">What I'd Do Differently Now</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated reveal" style="max-width: 750px;">
+    <ul>
+      <li class="reveal">Same approach, but <strong>more side projects</strong> &mdash; because you get stuck less often</li>
+      <li class="reveal">Gone are the days of grinding Stack Overflow for Python runtime errors</li>
+      <li class="reveal">AI removes the friction of getting started</li>
+      <li class="reveal">The barrier to building something real has never been lower</li>
+    </ul>
+  </div>
+  <span class="slide-num">4 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 5: The Good Ones ==================== -->
+<section class="slide">
+  <div class="card card-rotated-right reveal" style="max-width: 700px;">
+    <span class="tag">Optimistic Take</span>
+    <h2 style="margin-top: 0.5em;">The Good Ones Will Figure It Out</h2>
+    <div class="divider"></div>
+    <ul>
+      <li>Visited a friend's startup office recently</li>
+      <li>Bunch of energetic young people in Claude Code all day</li>
+      <li>Shipping real products, learning fast</li>
+      <li>The self-learners will thrive</li>
+    </ul>
+  </div>
+  <span class="slide-num">5 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 6: Harsh Reality ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Harsh Reality</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated reveal" style="max-width: 750px;">
+    <ul>
+      <li class="reveal">The average engineer who doesn't learn on their own is in for a tough time</li>
+      <li class="reveal">Universities massively over-provisioned CS grads for current demand</li>
+      <li class="reveal">Honest take: not sure what advice to give those who won't self-teach</li>
+      <li class="reveal">The gap between self-directed and passive learners is widening fast</li>
+    </ul>
+  </div>
+  <span class="slide-num">6 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 7: New Grads Meme ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">New Grads with AI</h2>
+  <img src="monkey_with_gun.png" alt="Chimp with weapon - representing new grads with AI" class="slide-image reveal" style="margin: 0.8em 0;">
+  <p class="caption reveal">Dangerous, but energetic &mdash; raw power without experience</p>
+  <span class="slide-num">7 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 8: Experienced Devs Meme ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">Experienced Devs with AI</h2>
+  <img src="money_smart.png" alt="Organized army - representing experienced devs with AI" class="slide-image rotate-right reveal" style="margin: 0.8em 0;">
+  <p class="caption reveal">Organized, strategic, commanding &mdash; AI amplifying expertise</p>
+  <span class="slide-num">8 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 9: Skills That Matter ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Skills That Matter Now</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated-right reveal" style="max-width: 750px;">
+    <ul>
+      <li class="reveal"><strong>Vibe Engineering</strong> &mdash; not just vibe coding</li>
+      <li class="reveal"><strong>System design</strong> &mdash; knowing how to architect software</li>
+      <li class="reveal"><strong>Having taste</strong> &mdash; knowing good from good enough</li>
+      <li class="reveal">Gone are the days of simple ticket-pushing without understanding the system</li>
+    </ul>
+  </div>
+  <span class="slide-num">9 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 10: Terminal / Confession ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal" style="margin-bottom: 0.6em;">"I shipped code I didn't understand."</h2>
+  <div class="terminal reveal">
+    <div class="terminal-bar">
+      <div class="terminal-dot red"></div>
+      <div class="terminal-dot yellow"></div>
+      <div class="terminal-dot green"></div>
+    </div>
+    <div class="line">$ npm run build</div>
+    <div class="warn">WARN: 14 unused imports</div>
+    <div class="warn">WARN: circular dependency detected</div>
+    <div class="comment"># whatever, it compiles</div>
+    <div class="line">$ npm run test</div>
+    <div class="success">Tests: 47 passed, 0 failed</div>
+    <div class="line">$ deploy --force --skip-review</div>
+    <div class="success">&#10003; DEPLOYMENT COMPLETE</div>
+    <div class="comment"># ...I have no idea how this works</div>
+  </div>
+  <p class="caption reveal" style="margin-top: 1em;">Generated it. Tested it. Deployed it. Couldn't explain how it worked.</p>
+  <span class="slide-num">10 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 11: Programming Became Gigantic ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">Programming Has Become a<br>Gigantic Problem</h2>
+  <div class="divider reveal"></div>
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-year">1972</div>
+      <div class="timeline-label">Dijkstra warns about complexity</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1990s</div>
+      <div class="timeline-label">OOP inheritance hell</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2010s</div>
+      <div class="timeline-label">Cloud / DevOps explosion</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Today</div>
+      <div class="timeline-label">Infinite-scale code generation</div>
+    </div>
+  </div>
+  <p class="caption reveal" style="margin-top: 1.5em;">We're facing a software crisis at infinite scale.</p>
+  <span class="slide-num">11 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 12: Easy vs Simple ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">Easy vs. Simple</h2>
+  <div class="divider reveal"></div>
+  <div class="compare reveal">
+    <div class="compare-col" style="transform: rotate(-0.3deg);">
+      <h3>Easy <span style="font-weight:400; font-size:0.7em;">(Adjacent)</span></h3>
+      <ul>
+        <li>Tangled, accessible</li>
+        <li>Vibe coding territory</li>
+        <li>Speed now, complexity later</li>
+      </ul>
+    </div>
+    <div class="compare-col" style="transform: rotate(0.3deg);">
+      <h3>Simple <span style="font-weight:400; font-size:0.7em;">(One-Fold)</span></h3>
+      <ul>
+        <li>Unentangled, understandable</li>
+        <li>Requires design upfront</li>
+        <li>Allows maintenance over time</li>
+      </ul>
+    </div>
+  </div>
+  <p class="caption reveal" style="margin-top: 1.2em;">The AI Trap: AI is the ultimate "Easy" button.</p>
+  <span class="slide-num">12 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 13: Spectrum ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Spectrum</h2>
+  <div class="divider reveal"></div>
+  <div class="spectrum reveal">
+    <div class="spectrum-left">
+      <h3>Vibe Coding</h3>
+      <ul>
+        <li>Spinning the wheel</li>
+        <li>Blind acceptance</li>
+        <li>"I hope this works"</li>
+      </ul>
+    </div>
+    <div class="spectrum-right">
+      <h3>Vibe Engineering</h3>
+      <ul>
+        <li>Steering the agent</li>
+        <li>Context-aware decisions</li>
+        <li>"I reviewed it, I understand it"</li>
+      </ul>
+    </div>
+  </div>
+  <p class="caption reveal" style="margin-top: 1em;">Slot machines &rarr; Cockpits</p>
+  <span class="slide-num">13 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 14: Three Archetypes ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">Three Archetypes</h2>
+  <div class="divider reveal"></div>
+  <div class="archetypes reveal">
+    <div class="archetype" style="transform: rotate(-0.5deg);">
+      <h3>The Beta Dev</h3>
+      <p>Obsesses over syntax, nits tabs vs spaces</p>
+      <div class="risk">Risk: Irrelevance</div>
+    </div>
+    <div class="archetype">
+      <h3>The Gambler</h3>
+      <p>Generates slop, doesn't read output</p>
+      <div class="risk">Risk: Unmaintainable legacy</div>
+    </div>
+    <div class="archetype" style="transform: rotate(0.5deg);">
+      <h3>The Engineer</h3>
+      <p>Architects the system, uses AI for mechanics, keeps the thinking</p>
+      <div class="risk" style="color: var(--dark-olive); font-weight: 600;">Goal: Be this one</div>
+    </div>
+  </div>
+  <span class="slide-num">14 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 15: Learning Without Typing ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">How to Learn When<br>You Aren't Typing</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated reveal" style="max-width: 750px;">
+    <h3>The Review IS the Learning</h3>
+    <ul>
+      <li class="reveal"><strong>Voice Coding / Rubber Ducking</strong> &mdash; talk to the agent</li>
+      <li class="reveal">Articulate your logic out loud before generating</li>
+      <li class="reveal">Audit the output line by line</li>
+      <li class="reveal">Mindset shift: You're auditing logic, not typing syntax</li>
+    </ul>
+  </div>
+  <span class="slide-num">15 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 16: Context Engineering ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Fix: Context Engineering</h2>
+  <div class="divider reveal"></div>
+  <div class="card card-rotated-right reveal" style="max-width: 700px; text-align: center;">
+    <h3>3-Phase Protocol</h3>
+    <p style="margin-bottom: 1em;">Research &rarr; Planning &rarr; Implementation</p>
+    <div class="divider" style="margin: 1em auto;"></div>
+    <div class="funnel" style="margin-top: 1em;">
+      <div class="funnel-stage">
+        <div class="num">5M</div>
+        <div class="label">tokens<br>(codebase)</div>
+      </div>
+      <div class="funnel-arrow">&rarr;</div>
+      <div class="funnel-stage">
+        <div class="num" style="font-size: clamp(1.2rem, 2.5vw, 2rem);">funnel</div>
+      </div>
+      <div class="funnel-arrow">&rarr;</div>
+      <div class="funnel-stage">
+        <div class="num">2,000</div>
+        <div class="label">words<br>(the spec)</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">16 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 17: Phase 1 ==================== -->
+<section class="slide stagger">
+  <div class="phase-card card-rotated reveal">
+    <div class="phase-number">Phase 1</div>
+    <h2>Research</h2>
+    <div class="divider"></div>
+    <h3>Map the system before you move</h3>
+    <ul>
+      <li class="reveal"><strong>Input:</strong> Diagrams, docs, Slack threads</li>
+      <li class="reveal"><strong>Action:</strong> Ask AI to map components</li>
+      <li class="reveal"><strong>Checkpoint:</strong> Correct the analysis manually</li>
+      <li class="reveal"><strong>Output:</strong> A validated research document</li>
+    </ul>
+  </div>
+  <span class="slide-num">17 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 18: Phase 2 ==================== -->
+<section class="slide stagger">
+  <div class="phase-card card-rotated-right reveal">
+    <div class="phase-number">Phase 2</div>
+    <h2>The Spec</h2>
+    <div class="divider"></div>
+    <h3>Paint by numbers &mdash; plan BEFORE writing code</h3>
+    <ul>
+      <li class="reveal">Function signatures, data flow, type definitions</li>
+      <li class="reveal">Edge cases and error handling spelled out</li>
+      <li class="reveal">Integration points mapped</li>
+      <li class="reveal"><strong>Rule:</strong> "Go do this" should be the only instruction needed</li>
+    </ul>
+  </div>
+  <span class="slide-num">18 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 19: Phase 3 ==================== -->
+<section class="slide stagger">
+  <div class="phase-card card-rotated reveal">
+    <div class="phase-number">Phase 3</div>
+    <h2>Implementation</h2>
+    <div class="divider"></div>
+    <h3>Simple execution because the plan is solid</h3>
+    <ul>
+      <li class="reveal">No "wait, actually" loops</li>
+      <li class="reveal">No abandoned code paths</li>
+      <li class="reveal">No spaghetti</li>
+      <li class="reveal">The agent executes. You verify.</li>
+    </ul>
+  </div>
+  <span class="slide-num">19 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 20: The Engine ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Engine: Under the Hood</h2>
+  <p class="subtitle reveal" style="margin-bottom: 1.2em;">How Claude Code actually works</p>
+  <div class="loop reveal">
+    <div class="loop-step" style="transform: rotate(-0.5deg);">
+      <div class="step-title">Model</div>
+      <div class="step-sub">Reasoning</div>
+    </div>
+    <div class="loop-arrow">&rarr;</div>
+    <div class="loop-step">
+      <div class="step-title">Tool Call</div>
+      <div class="step-sub">Action</div>
+    </div>
+    <div class="loop-arrow">&rarr;</div>
+    <div class="loop-step" style="transform: rotate(0.5deg);">
+      <div class="step-title">Result</div>
+      <div class="step-sub">Output</div>
+    </div>
+    <div class="loop-arrow">&rarr;</div>
+    <div class="loop-step">
+      <div class="step-title">Loop</div>
+      <div class="step-sub">Repeat</div>
+    </div>
+  </div>
+  <p class="caption reveal" style="margin-top: 1.5em;">It's not magic. It's a While Loop.</p>
+  <span class="slide-num">20 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 21: Knowledge Gap ==================== -->
+<section class="slide stagger">
+  <h2 class="reveal">The Knowledge Gap</h2>
+  <div class="divider reveal"></div>
+  <div class="compare reveal">
+    <div class="compare-col" style="transform: rotate(-0.3deg);">
+      <h3>Code that passes tests</h3>
+      <p>Looks correct in CI. Syntactically valid. Coverage is green.</p>
+    </div>
+    <div class="compare-col" style="transform: rotate(0.3deg);">
+      <h3>Code that survives production</h3>
+      <p>Handles edge cases. Scales under load. Fails gracefully.</p>
+    </div>
+  </div>
+  <div class="card reveal" style="max-width: 700px; margin-top: 1.2em; text-align: center; transform: rotate(-0.3deg);">
+    <h3 style="color: #8a4a3a;">The Danger: Atrophy</h3>
+    <p>Skip the thinking, lose the instinct. Pattern recognition comes from pain.</p>
+  </div>
+  <span class="slide-num">21 / 22</span>
+</section>
+
+<!-- ==================== SLIDE 22: Closing ==================== -->
+<section class="slide stagger">
+  <div class="reveal" style="text-align: center; max-width: 750px;">
+    <h1 style="margin-bottom: 0.3em;">Software Is Still a<br>Human Endeavor</h1>
+    <div class="divider" style="margin: 0.8em auto;"></div>
+    <p class="big-quote" style="font-size: clamp(1.1rem, 2.2vw, 1.6rem); margin-bottom: 1em;">
+      The hard part was never typing.<br>The hard part is knowing <em>what</em> to type.
+    </p>
+    <div class="divider" style="margin: 1em auto;"></div>
+    <p style="font-size: clamp(1rem, 2vw, 1.4rem); font-family: 'Source Serif 4', serif; font-weight: 600; color: var(--dark-olive);">
+      Do not outsource the thinking.
+    </p>
+  </div>
+  <span class="slide-num">22 / 22</span>
+</section>
+
+<!-- Navigation hint -->
+<div class="nav-hint" id="navHint">&darr; scroll or arrow keys to navigate</div>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Keyboard navigation
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function goToSlide(index) {
+  if (index >= 0 && index < slides.length) {
+    currentSlide = index;
+    slides[index].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  // Find which slide is currently most visible
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const windowHeight = window.innerHeight;
+  currentSlide = Math.round(scrollTop / windowHeight);
+
+  switch(e.key) {
+    case 'ArrowDown':
+    case 'ArrowRight':
+    case ' ':
+    case 'PageDown':
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+      break;
+    case 'ArrowUp':
+    case 'ArrowLeft':
+    case 'PageUp':
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+      break;
+    case 'Home':
+      e.preventDefault();
+      goToSlide(0);
+      break;
+    case 'End':
+      e.preventDefault();
+      goToSlide(slides.length - 1);
+      break;
+  }
+});
+
+// Hide nav hint after first scroll
+let hintShown = true;
+window.addEventListener('scroll', () => {
+  if (hintShown && window.scrollY > 100) {
+    document.getElementById('navHint').classList.add('hidden');
+    hintShown = false;
+  }
+}, { passive: true });
+
+// Touch support (swipe)
+let touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+  const touchEndY = e.changedTouches[0].screenY;
+  const diff = touchStartY - touchEndY;
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const windowHeight = window.innerHeight;
+  currentSlide = Math.round(scrollTop / windowHeight);
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      goToSlide(currentSlide + 1);
+    } else {
+      goToSlide(currentSlide - 1);
+    }
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
